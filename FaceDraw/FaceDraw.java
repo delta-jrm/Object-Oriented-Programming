@@ -65,7 +65,6 @@ import java.util.*;
 class FaceFrame extends JFrame {
 
     FaceFrame() {
-
         // The below segment sets up the frame, titled "OvalDraw", dimensions, and visibility.
         setTitle("FaceDraw");
         setSize(1000,1000); 
@@ -74,13 +73,49 @@ class FaceFrame extends JFrame {
         //Builds new Oval Object in color Green (Neon-ish Green/Yellow).
         Face face1 = new Face();
         Face face2 = new Face();
-
+        Face face3 = new Face();
+        Face face4 = new Face();
+        Face face5 = new Face();
+        Face face6 = new Face();
+        Face face7 = new Face();
+        Face face8 = new Face();
+        Face face9 = new Face();
+        Face face10 = new Face();        
         // Builds a Content Pane to display the Oval within.
         Container contentPane = getContentPane(); 
 
         // Adds the Oval to the Content Pane.
-        contentPane.add(face1);
-        contentPane.add(face2);
+        getContentPane().add(face1);
+        revalidate();
+        repaint();
+        getContentPane().add(face2);
+        revalidate();
+        repaint();
+        getContentPane().add(face3);
+        revalidate();
+        repaint();
+        getContentPane().add(face4);
+        revalidate();
+        repaint();
+        getContentPane().add(face5);
+        revalidate();
+        repaint();
+        getContentPane().add(face6);
+        revalidate();
+        repaint();
+        getContentPane().add(face7);
+        revalidate();
+        repaint();
+        getContentPane().add(face8);
+        revalidate();
+        repaint();
+        getContentPane().add(face9);
+        revalidate();
+        repaint();
+        getContentPane().add(face10);
+        revalidate();
+        repaint();
+
     }
 }
 
@@ -92,7 +127,6 @@ public class FaceDraw {
         FaceFrame myFrame = new FaceFrame();
         myFrame.setVisible(true);
         //}
-        
 
+      }
     }
-}
