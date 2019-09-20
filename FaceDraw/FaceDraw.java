@@ -51,9 +51,9 @@ class Face extends JPanel
     public Face(){
         Random generator = new Random();
         this.facetype = generator.nextInt(3);
-        this.facex = generator.nextInt(200);
-        this.facey = generator.nextInt(200);
-        this.facewidth = generator.nextInt(700) + 25;
+        this.facex = generator.nextInt(1200);
+        this.facey = generator.nextInt(500);
+        this.facewidth = generator.nextInt(500) + 25;
         this.faceheight = facewidth;
         this.eyeline = facey + (faceheight/4);
         this.eyex1 = facex + (facewidth/3);
@@ -66,17 +66,19 @@ class Face extends JPanel
         this.mouthwidth = facewidth/2;
 
     } 
-    
-    public void drawFace(Graphics g) {
+
+    public void drawEyes(Graphics g) {
+        g.setColor(Color.black);
+        g.drawArc( eyex1, eyeline, 14, 14, 0, 360);
+        g.drawArc( eyex2, eyeline, 14, 14, 0, 360);
+    }
+
+    public void drawFaceShape(Graphics g) {
         g.setColor( Color.black);
         g.drawArc(facex, facey, facewidth, faceheight, 0, 360);
+    }
 
-        g.setColor( Color.black);
-        g.drawArc( eyex1, eyeline, 10, 10, 0, 360);
-        g.drawArc( eyex2, eyeline, 10, 10, 0, 360);
-
-        //g.setColor( Color.black);
-        //g.drawArc( 100, 100, mouthwidth, mouthheight, 0, 180);
+    public void drawMouth(Graphics g) {
 
         if (facetype == 2) {
             g.setColor( Color.black);
@@ -93,11 +95,16 @@ class Face extends JPanel
             g.setColor( Color.black);
             g.drawLine( mouthx1, mouthy1, mouthx2, mouthy2);
 
+    }
+}
+    
+    public void drawFace(Graphics g) {
+        drawEyes(g);
+        drawFaceShape(g);
+        drawMouth(g);
         }
     }
 
-   
-    }
 
 public class FaceDraw extends JFrame {
 
@@ -107,7 +114,7 @@ public class FaceDraw extends JFrame {
         //for(int i=0; i <= 10; i++);
         JFrame frame = new JFrame();
         frame.setTitle("FaceDraw");
-        frame.setSize(1000,1000); 
+        frame.setSize(5000,5000); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new FaceFrame());
         frame.setVisible(true);
