@@ -12,7 +12,6 @@ class FaceFrame extends JPanel {
         Random generator = new Random();
         this.numberfaces = generator.nextInt(10);
         faces = new ArrayList<>();
-        addFaces();
     }
 
     public void addFaces() {
@@ -25,16 +24,16 @@ class FaceFrame extends JPanel {
             faces.add(new Face());
         }
     }
-
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        addFaces();
         for(Face face : faces) {
             face.drawFace(g);
         }
     }
 }
 
-class Face
+class Face extends JPanel
 {
     private ArrayList<Face> faces = new ArrayList<>();
     Random generator = new Random();
@@ -57,7 +56,7 @@ class Face
     public Face(){
         Random generator = new Random();
         this.facetype = generator.nextInt(3);
-        this.facecolor = generator.nextInt(6);
+        this.facecolor = generator.nextInt(5);
         this.facex = generator.nextInt(1200);
         this.facey = generator.nextInt(500);
         this.facewidth = generator.nextInt(400) + 70;
@@ -152,7 +151,7 @@ class Face
         }
 
         if (facecolor == 0) {
-            g.setColor( Color.cyan);
+            g.setColor( Color.pink);
             g.fillArc(facex, facey, facewidth, faceheight, 0, 360);
             
             g.setColor( Color.black);
