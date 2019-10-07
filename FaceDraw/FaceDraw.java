@@ -24,6 +24,7 @@ class FacePanel extends JPanel {
         this.numberfaces = generator.nextInt(10);
         FaceList = new ArrayList<>();
         addFaces();
+        System.out.println(FaceList.toString()); 
     }
 
     public void addFaces() {
@@ -207,6 +208,13 @@ class Face
         drawFaceShape(g);
         drawEyes(g);
         drawMouth(g);
+        //System.out.println(toString()); 
         }
+
+        public String toString() 
+    { 
+        return "This is the information about a face drawn:" + " Face Type:" + facetype + " Face Color:" + facecolor; 
+    } 
+
     }
 
