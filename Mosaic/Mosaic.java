@@ -207,10 +207,10 @@ class Tile extends JPanel implements MouseListener {
     public void mouseEntered(MouseEvent e) {}
 }
 
-class MosaicLiteFrame extends JFrame implements ActionListener {
+class MosaicFrame extends JFrame implements ActionListener {
     private ArrayList<Tile> tileList;
 
-    public MosaicLiteFrame() {
+    public MosaicFrame() {
         setBounds(200,200,1200,800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -240,14 +240,15 @@ class MosaicLiteFrame extends JFrame implements ActionListener {
         for(Tile tile : tileList) {
             tile.SetRandomValues();
         }
+
         repaint();
     }
 }
 
 public class Mosaic {
     public static void main(String[] args) {
-        System.out.println("MosaicLite Starting...");
-        MosaicLiteFrame myMosaicLiteFrame = new MosaicLiteFrame();
-        myMosaicLiteFrame.setVisible(true);
+        System.out.println("Start paint***")
+        MosaicFrame myMosaicFrame = new MosaicFrame();
+        myMosaicFrame.setVisible(true);
     }
 }
