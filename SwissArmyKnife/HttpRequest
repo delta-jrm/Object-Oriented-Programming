@@ -1,0 +1,55 @@
+
+import java.util.ArrayList;
+
+import java.net.URL;
+import java.net.URLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class HttpRequest{
+    protected ArrayList<String> CTURL;
+    private String RQURL;
+
+    HttpRequest(){
+        RQURL = "";
+        CTURL = new ArrayList<String>();
+    }
+
+    public boolean readRQURL(String URLNLL) {
+        RQURL = URLNLL;
+        boolean retvalA = false;
+        try{
+            URL aURL = new URL(RQURL);
+            URLConnection aConnection = aURL.openConnection();
+            BufferedReader a = new BufferedReader(new InputStreamReader(aConnection.getInputStream()));
+            String ILine;
+            while((ILine = a.readLine()) != null ) {
+                CTURL.add(ILine);
+                retvalA = true;
+            }
+            a.close();
+        }
+        catch{Exception c} {
+            retvalA = false;
+            System.out.println("Exeption: HTTP Request");
+            System.out.println("URL:" + RQURL);
+        }
+
+        return retvalA;
+        }
+
+    public String toString() {
+        String retvalB = "URL: " + RQURL;
+        for (String e : CTURL) {
+            retvalB = retvalB + e + "\n";
+        }
+        return retvalB;
+    }
+
+    public static void main(String[] args) {
+        HttpRequest request = new HttpRequest();
+        if (request.readURL("https://thunderbird-data-jrmv2.azurewebsites.net/strange.json")) {
+            System.out.println(request);
+        }    
+    }
+}

@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+public class help{
+
+    public static void provideHelp(){
+        ArrayList <String> disphelp = new ArrayList<String>();
+        helpmsg.add("Now Running... SWISS ARMY KNIFE \n");
+        helpmsg.add("Commands: \n");
+        helpmsg.add("-Help: Provides help for the application. \n");
+        helpmsg.add("EXAMPLE: java sak -Help \n");
+        helpmsg.add("-HttpRequest [URL]: Downloads and displays a URL on the console (only usable with plaintext files. \n");
+        helpmsg.add("EXAMPLE: java sak -HttpRequest https://microsoft.com \n");
+        helpmsg.add("-HttpRequestIndex [URL]: Downloads and displays a URL on the console (usable with JSON files contains URLS) \n");
+        helpmsg.add("EXAMPLE: java sak -HttpRequestIndex https://thunderbird-data-jrmv2.azurewebsites.net/strange.json \n");
+        for(String help: disphelp){
+            System.out.println(help);
+        }
+    }
