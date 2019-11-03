@@ -5,14 +5,26 @@ import javax.swing.*;
 import java.lang.Math;
 import java.util.*;
 
-class FaceFrame extends JPanel {
+
+public class FaceDraw {
+
+    public static void main(String[] args) {
+        System.out.println("FaceDraw Starting..."); 
+        FaceFrame face = new FaceFrame();
+
+      }
+    }
+
+class FacePanel extends JPanel {
     int numberfaces;
-    ArrayList<Face> faces;
-    FaceFrame() {
+    ArrayList<Face> FaceList;
+
+    FacePanel() {
         Random generator = new Random();
         this.numberfaces = generator.nextInt(10);
-        faces = new ArrayList<>();
+        FaceList = new ArrayList<>();
         addFaces();
+        System.out.println(FaceList.toString()); 
     }
 
     public void addFaces() {
@@ -22,21 +34,34 @@ class FaceFrame extends JPanel {
         }
 
         for(int i = numberfaces; i > 0; i--) {
-            faces.add(new Face());
+            FaceList.add(new Face());
         }
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for(Face face : faces) {
+        for(Face face : FaceList) {
             face.drawFace(g);
         }
     }
 }
 
+class FaceFrame extends JFrame {
+
+    FaceFrame() {
+        Frame frame = new JFrame();
+        frame.setSize(5000,5000);
+        frame.setTitle("FaceDraw");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new FacePanel());
+        frame.setVisible(true);
+    }
+
+}
+
 class Face
 {
-    private ArrayList<Face> faces = new ArrayList<>();
+    private ArrayList<Face> FaceList = new ArrayList<>();
     Random generator = new Random();
     int facetype;
     int facecolor;
@@ -79,8 +104,6 @@ class Face
         g.setColor(Color.black);
         g.fillArc(eyex1,eyeline,10,15,0,360);
         g.fillArc(eyex2,eyeline,10,15,0,360);
-        //g.drawArc( eyex1, eyeline, 14, 14, 0, 360);
-        //g.drawArc( eyex2, eyeline, 14, 14, 0, 360);
 
         if (facetype == 2) {
        
@@ -185,20 +208,13 @@ class Face
         drawFaceShape(g);
         drawEyes(g);
         drawMouth(g);
+        //System.out.println(toString()); 
         }
+
+        public String toString() 
+    { 
+        return "This is the information about a face drawn:" + " Face Type:" + facetype + " Face Color:" + facecolor; 
+    } 
+
     }
 
-
-public class FaceDraw extends JFrame {
-
-    public static void main(String[] args) {
-        System.out.println("FaceDraw Starting..."); 
-        JFrame frame = new JFrame();
-        frame.setSize(5000,5000);
-        frame.setTitle("FaceDraw");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new FaceFrame());
-        frame.setVisible(true);
-
-      }
-    }
